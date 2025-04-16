@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau de bord Client</title>
+</head>
+<body>
+    <h2>Bienvenue, {{ user.username }} !</h2>
+    <p>Vous êtes connecté en tant que <strong>Client</strong>.</p>
+
+    <p>Fonctionnalités à venir : consulter les restaurants, passer une commande, etc.</p>
+
+    <a href="{% url 'logout' %}">Se déconnecter</a>
+</body>
+</html>

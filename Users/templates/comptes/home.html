@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bienvenue sur le site</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      min-height: 100vh;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .header-btn {
+      font-size: 18px;
+      font-weight: bold;
+      background: #fff;
+      color: #0072ff;
+      border-radius: 30px;
+      padding: 10px 25px;
+      transition: all 0.3s ease;
+    }
+
+    .header-btn:hover {
+      background: #0072ff;
+      color: #fff;
+      box-shadow: 0 0 10px #fff;
+    }
+
+    .search-bar {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .search-bar input {
+      border-radius: 30px;
+      padding: 10px 20px;
+      width: 60%;
+      border: none;
+      outline: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .search-bar button {
+      border-radius: 30px;
+      padding: 10px 25px;
+      border: none;
+      background-color: #fff;
+      color: #0072ff;
+      font-weight: bold;
+      margin-left: 10px;
+      transition: 0.3s ease;
+    }
+
+    .search-bar button:hover {
+      background-color: #0072ff;
+      color: #fff;
+      box-shadow: 0 0 10px #fff;
+    }
+
+    .section-title {
+      margin-top: 60px;
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    .card-inscription {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      color: #fff;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .card-inscription:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .card-text {
+      font-size: 16px;
+    }
+
+    .btn-info, .btn-warning {
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn-info:hover {
+      background-color: #0dcaf0;
+      color: #000;
+    }
+
+    .btn-warning:hover {
+      background-color: #ffc107;
+      color: #000;
+    }
+
+    footer {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      color: #fff;
+      font-weight: 500;
+      font-size: 14px;
+      margin-top: 50px;
+    }
+
+    .card-inscription {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 0.6s ease forwards;
+    }
+
+    .card-inscription:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .card-inscription:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header avec bouton de connexion -->
+  <header>
+    <a href="{% url 'login' %}" class="btn header-btn">Se connecter</a>
+  </header>
+
+  <!-- Barre de recherche -->
+  <div class="container search-bar">
+    <form method="get"  class="d-flex justify-content-center">
+      <input type="text" name="q" placeholder="Rechercher un restaurant ou un service..." aria-label="Recherche" class="form-control form-control-lg">
+      <button type="submit">🔍 Rechercher</button>
+    </form>
+  </div>
+
+  <div class="container">
+    <!-- Section commune Livreur et Restaurant -->
+    <div class="section-title text-center mt-5">
+      <h2>Vous êtes Livreur ou Restaurant ?</h2>
+      <p>Inscrivez-vous pour commencer à livrer ou proposer vos plats !</p>
+    </div>
+
+    <div class="row justify-content-center mb-5">
+      <!-- Carte Livreur -->
+      <div class="col-md-6 col-lg-5 mb-4">
+        <div class="card card-inscription shadow">
+          <div class="card-body text-center">
+            <h5 class="card-title">Inscription Livreur</h5>
+            <p class="card-text">Devenez partenaire de livraison en quelques clics.</p>
+            <a href="{% url 'register_livreur' %}" class="btn btn-info">Devenir Livreur</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carte Restaurant -->
+      <div class="col-md-6 col-lg-5 mb-4">
+        <div class="card card-inscription shadow">
+          <div class="card-body text-center">
+            <h5 class="card-title">Inscription Restaurant</h5>
+            <p class="card-text">Augmentez votre visibilité et vos commandes en ligne.</p>
+            <a href="{% url 'register_restaurant' %}" class="btn btn-warning">Devenir Partenaire</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center py-4">
+    <p>&copy; 2025 MonSite - Tous droits réservés</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
